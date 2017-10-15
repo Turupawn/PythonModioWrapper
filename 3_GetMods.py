@@ -3,7 +3,9 @@ print "Getting mods..."
 
 get_mods_finished = False
 
-filter = ctypes.pointer(Filter("","","","","","","","","","","","","",""))
+filter = ctypes.pointer(Filter())
+
+lib.initFilter(filter)
 
 def on_get_mods(response_code, message, mods, mods_size):
    print "Mods retreived!"
