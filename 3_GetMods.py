@@ -5,7 +5,13 @@ get_mods_finished = False
 
 filter = ctypes.pointer(Filter())
 
-lib.initFilter(filter)
+lib.modioInitFilter(filter)
+lib.modioSetFilterSort(filter,"name",False)
+lib.modioSetFilterLimit(filter,5)
+addFilterMinField_func = lib.modioAddFilterMinField
+addFilterMinField_func.argtypes = [ctypes.POINTER(Filter), ctypes.c_char_p, ctypes.c_double]
+addFilterMinField_func(filter,"id",25.0)
+#lib.addFilterInField(filter,"name","Test")
 
 def on_get_mods(response_code, message, mods, mods_size):
    print "Mods retreived!"
